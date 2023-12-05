@@ -33,7 +33,7 @@ namespace BlazorServer.AdaptorPatternExample.UnitTests.ServiceTests
 
             FruityViceService.Setup(x => x.GetFruitByName(It.IsAny<string>())).Returns((string x) => 
             {
-                return Task.FromResult(FruityViceFruitList.FirstOrDefault(y => y.name == x));
+                return Task.FromResult(FruityViceFruitList.FirstOrDefault(y => y.name == x)!);
             });
 
             FruitService = new FruitService(FruitRepo.Object, FruityViceService.Object);
