@@ -1,0 +1,38 @@
+﻿@page "/newfruit"
+
+<MudText @attributes='Splats.PageHeader("newfruit")'>Look Up Fruit</MudText>
+
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="Form" @bind-IsValid="@success" @bind-Errors="@errors">
+                <MudTextField @attributes='Splats.TextRequired("LookUpString")' T="string" @bind-Value="LookUpString" />
+            </MudForm>
+        </MudPaper>
+        <MudPaper Class="pa-4 mt-4">
+            <MudButton @attributes="Splats.NewButton()" OnClick="Save">Save</MudButton>
+            <MudButton @attributes="Splats.ResetButton()" OnClick="@(()=>Form!.ResetAsync())" Class="mx-2">Reset</MudButton>
+            <MudButton @attributes="Splats.CancelButton()" OnClick="CancelClick">Cancel</MudButton>
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="12" sm="5">
+        <MudPaper Class="pa-4 mud-height-full">
+            @if (NewFruit?.Id > 0)
+            {
+                <MudText Typo="Typo.h4">Fruit: @NewFruit.Name</MudText>
+                <MudText>Order: @NewFruit.Order</MudText>
+                <MudText>Genus: @NewFruit.Genus</MudText>
+                <MudText>Family: @NewFruit.Family</MudText>
+                <MudText>Calories: @NewFruit.Calories</MudText>
+                <MudText>Carbohydrates: @NewFruit.Carbohydrates</MudText>
+                <MudText>Fat: @NewFruit.Fat</MudText>
+                <MudText>Protein: @NewFruit.Protein</MudText>
+                <MudText>Sugar: @NewFruit.Sugar</MudText>
+            }
+            else
+            {
+                <MudText Typo="Typo.h5">Fruit</MudText>
+            }
+        </MudPaper>
+    </MudItem>
+</MudGrid>
